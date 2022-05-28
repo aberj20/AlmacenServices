@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import es.rama.books.entity.Producto;
 import es.rama.books.repository.BaseRepository;
@@ -23,6 +25,18 @@ public ProductoServiceImpl(BaseRepository<Producto, Long> baseRepository) {
 	// TODO Auto-generated constructor stub
 
 
+}
+
+@Override
+public List<Producto> search(String filtro) {
+	
+	return  productoRepository.busquedaByNombreNativo(filtro);
+}
+
+@Override
+public Page<Producto> search(String filtro, Pageable pageable) {
+
+return  productoRepository.busquedaByNombreNativo(filtro,pageable);
 }
 
 

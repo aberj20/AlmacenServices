@@ -19,10 +19,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Venta extends Base{
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
+	//@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="cajero")
 	private Cajero cajero;
+	
+	//@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="maquina")
+	private MaquinaRegistradora maquina;
+	
+	//@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="producto")
+	private Producto producto;
 
 	@Column(name="fecha_venta")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -30,9 +40,13 @@ public class Venta extends Base{
 	
 
 
-	public Venta(Long id, Cajero cajero, Calendar fecha) {
+
+
+	public Venta(Long id, Cajero cajero, MaquinaRegistradora maquina, Producto producto, Calendar fecha) {
 		super(id);
 		this.cajero = cajero;
+		this.maquina = maquina;
+		this.producto = producto;
 		this.fecha = fecha;
 	}
 
@@ -51,12 +65,31 @@ public class Venta extends Base{
 	}
 
 	public Cajero getCajero() {
-		System.out.print("ID cajero" +cajero.getId());
 		return cajero;
 	}
 
 	public void setCajero(Cajero cajero) {
 		this.cajero = cajero;
+	}
+
+
+	public MaquinaRegistradora getMaquina() {
+		return maquina;
+	}
+
+
+	public void setMaquina(MaquinaRegistradora maquina) {
+		this.maquina = maquina;
+	}
+
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 	
 	

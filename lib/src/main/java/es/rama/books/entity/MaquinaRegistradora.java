@@ -10,11 +10,11 @@ import javax.persistence.Table;
 
 public class MaquinaRegistradora extends Base{
 	@Column(name="piso")
-private int piso;
+private Long piso;
 
 	
 	
-	public MaquinaRegistradora(Long id,int piso) {
+	public MaquinaRegistradora(Long id,Long piso) {
 		super(id);
 		this.piso = piso;
 	}
@@ -25,11 +25,11 @@ private int piso;
 	}
 
 
-	public int getPiso() {
+	public Long getPiso() {
 		return piso;
 	}
 
-	public void setPiso(int piso) {
+	public void setPiso(Long piso) {
 		this.piso = piso;
 	}
 	
